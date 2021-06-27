@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #fff;
+}
+
+nav {
+    background: #33403D;
+}
+
+.navbar-brand {
+    font-family: "cabecera";
+    src: url(./fuentes/Beauty\ and\ the\ Beast\ Sample.ttf);
+}
+
+@font-face {
+    font-family: "cabecera";
+    src: url(./fuentes/Beauty\ and\ the\ Beast\ Sample.ttf);
+}
+
+
+/* foooooter pie pagina*/
+
+
+/* Footer left */
+
+.footer2 h3 {
+    color: #ffffff;
+    font: normal 25px 'Cookie', cursive;
+    margin-top: 30px;
+}
+
+
+/* The company logo */
+
+.footer2 h3 span {
+    color: #e0ac1c;
+}
+
+
+/* Footer links */
+
+.footer2 .footer-links {
+    color: #ffffff;
+    margin: 20px 0 12px;
+}
+
+.footer2 .footer-links a {
+    display: inline-block;
+    line-height: 1.8;
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer2 .footer-company-name {
+    color: #8f9296;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+}
+
+footer {
+    background: rgb(27, 26, 26);
+    text-align: center;
+}
+
+.footer3 p {
+    display: inline-block;
+    color: #ffffff;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.footer3 a {
+    color: #e0ac1c;
+    text-decoration: none;
+}
+
+.footer3 {
+    margin-top: 30px;
+}

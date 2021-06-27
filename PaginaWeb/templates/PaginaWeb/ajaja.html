@@ -1,0 +1,55 @@
+{% extends 'PaginaWeb/base.html' %}
+{% block contenido %}
+
+<div id="section1" class="container-fluid " style="  padding-top:150px;padding-bottom :10px; ">
+
+    <form action="" class="formulario" id="formulario" style="width: 700px; height: 620px; ">
+
+        <h1>Ingresar</h1>
+
+        <!-- Grupo: Correo Electronico -->
+        <div class="formulario__grupo" id="grupo__correo">
+            <label for="correo" class="formulario__label">Correo Electrónico</label>
+            <div class="formulario__grupo-input">
+                <input type="email" class="formulario__input" name="correo" id="correo" placeholder="correo@correo.cl"><span class="barra"></span>
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">El correo solo puede contener letras, numeros, puntos, guiones y guion bajo.</p>
+        </div>
+
+
+
+        <!-- Grupo: Contraseña -->
+        <div class="formulario__grupo" id="grupo__password">
+            <label for="password" class="formulario__label">Contraseña</label>
+            <div class="formulario__grupo-input">
+                <input type="password" class="formulario__input" name="password" id="password" placeholder="contraseña"><span class="barra"></span>
+                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+            </div>
+            <p class="formulario__input-error">La contraseña o el correo no coinciden</p>
+        </div>
+
+
+
+
+
+        <div class="formulario__mensaje" id="formulario__mensaje">
+            <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+        </div>
+
+        <div class="formulario__grupo formulario__grupo-btn-enviar">
+            <button type="submit" class="formulario__btn">Enviar</button>
+            <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+            <a href="#">¿Tienes problemas con tu cuenta?</a>
+            <a href=" {%url 'registrar'%} ">Crear cuenta</a>
+        </div>
+
+        {% csrf_token %}
+        {{form}}
+    </form>
+</div>
+
+
+
+
+{% endblock %}
