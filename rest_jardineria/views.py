@@ -1,34 +1,34 @@
 from django.shortcuts import render
-from rest_framework import serializers, status
+from rest_framework import  status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from rest_framework.parsers import DataAndFiles, JSONParser
+from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 from PaginaWeb.models import Producto
 from .serializers import ProductoSerializer
+
+
+
 @csrf_exempt
-@api_view (['GET' , 'POST'])
+@api_view (['GET','POST'])
 def listado_productos (request):
- 
     if request.method == 'GET':
-        
-        producto = Producto.objects.all ()
-        serializers = ProductoSerializer (producto, many=True )
-        return Response (serializers.data)
-    elif request.method  == 'POST' :
-        data = JSONParser ().parse(request)
-        serializers = ProductoSerializer(data=data)
-        if serializers.is_valid ():
-            serializers.save ()
-            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        producto = Producto.objects.all()
+        serializer = ProductoSerializer(producto, many=True )
+        return Response(serializer.data)
+    elif request.method == 'POST':
+        data = JSONParser().parse(request)
+        serializer = ProductoSerializer(data=data)
+        if(serializer.is_valid()):
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
-                return Response (serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @api_view(['GET','PUT','DELETE'])
 def detalle_producto(request,id):
-
     try:
-
         producto = Producto.objects.get(marca=id)
 
     except Producto.DoesNotExist:
@@ -38,28 +38,30 @@ def detalle_producto(request,id):
 
     if request.method == 'GET':
 
-        serializers = ProductoSerializer(producto)
+        serializer = ProductoSerializer(producto)
 
-        return Response(serializers.data)
+        return Response(serializer.data)
 
     if request.method == 'PUT':
 
         data = JSONParser().parse(request)
 
-        serializers = ProductoSerializer(producto, data=data)
+        serializer = ProductoSerializer(producto,data=data)
 
-        if(serializers.is_valid()):
+        if(serializer.is_valid()):
 
-            serializers.save()
+            serializer.save()
 
-            return Response(serializers.data)
+            return Response(serializer.data)
 
         else:
 
-            return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'DELETE':
 
         producto.delete()
 
         return Response(status=status.HTTP_204_NOT_CONTENT)
+
+
